@@ -14,13 +14,29 @@ int menu(choix)
             printf("2.Intermediaire pour joueurs habitues\n");
             printf("3.Difficile pour un vrai defis\n");
             scanf ("%d", &choix);
-            if choix( ==1)
+
+            if (choix ==1)
             {
                 printf("1.1ere grille\n");
                 printf("2;2eme grille\n");
                 printf("3.3eme grille\n");
                 scanf ("%d", &choix);
             }
+            if (choix ==2)
+            {
+                printf("1.1ere grille\n");
+                printf("2;2eme grille\n");
+                printf("3.3eme grille\n");
+                scanf ("%d", &choix);
+            }
+            if (choix ==3)
+            {
+                printf("1.1ere grille\n");
+                printf("2;2eme grille\n");
+                printf("3.3eme grille\n");
+                scanf ("%d", &choix);
+            }
+
 
 
             break;
@@ -53,6 +69,7 @@ int menu(choix)
 int main ()
 {
 
+
     char pseudo [50];
     printf("____________________\n");
     printf("Bienvenue sur Hanjie\n");
@@ -60,7 +77,7 @@ int main ()
     printf("quel est votre pseudo ?\n");
     scanf("%s", &pseudo );
     int choix = 0;
-    printf("1. Niveau de dificulte\n");
+    printf("1. Niveau de difficulte\n");
     printf("2. Jouer au Hanjie\n");
     printf("3. Historique de vos parties\n");
     printf ("4.Quitter\n");
