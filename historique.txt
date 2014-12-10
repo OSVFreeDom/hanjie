@@ -1,0 +1,5 @@
+Pseudo:efg
+Choix de la difficulte:1
+Numero de grille1
+1
+ grille1
