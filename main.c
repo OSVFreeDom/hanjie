@@ -11,19 +11,11 @@
 int main(int argc, char const *argv[])
 {
 	int *retour_menu =0;
-	int *force_choix =5;
 	char *choix_grille[TAILLE_MAX];
-	affichage_menu(&choix_grille,&force_choix,&retour_menu);
-	if(retour_menu == 1)
-	{
-		printf("OKKKKKKKKKKKKK LA BUSE\n");
-	}
-printf("test 2\n");
-	//printf("%s\n", choix_grille);
-
+	affichage_menu(&choix_grille);
 	int jeu_fini = 0;
 	char* nom_fichier = choix_grille;
-
+    // initialisation des variables pour l'affichage et la gestion des grilles :
 	int *taille[2] = {0};
 	int *grille[TAILLE_MAX][TAILLE_MAX] = {0};
 	int *grille_cours[TAILLE_MAX][TAILLE_MAX] = {2};
@@ -50,6 +42,7 @@ printf("test 2\n");
 		affichage_grille2(&indicateurs_colones, &taille, &taille_nb_lignes_indicateur_colones, &nb_colones, &taille_nb_lignes_indicateur_lignes);
 		affichage_grille_cours(1,1, nom_fichier, &nb_colones, &indicateurs_lignes, &taille, &taille_nb_lignes_indicateur_lignes, &nb_lignes, &grille, &grille_cours);
 		printf("\n Coordonnees ? : ");
+		scanf("%d",&retour_final);
 		fgets(&commande, sizeof &commande, stdin);
 		createCoordonnee(&commande, &nb_lignes, &nb_colones, &modifs);
 		modifs_grille(&modifs, &grille_cours, &taille);
