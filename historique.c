@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
         while (fgets(chaine, TAILLE_MAX, historique) != NULL) //On lit le fichier tant que l'on ne reçoit pas (NULL).
         {
             printf("%s", chaine); //on affiche la chaîne que l'on vient de lire.
-            fseek(historique,0, SEEK_SET);
 
         }
 
