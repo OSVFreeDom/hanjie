@@ -3,7 +3,7 @@
 #include <string.h>
 #include <time.h>
 #include <unistd.h>
-#define TAILLE_MAX 70 // Tableau de taille 70
+#define TAILLE_MAX 150 // Tableau de taille 150
 
 int affichage_menu(char* choix_grille[TAILLE_MAX], int* retour_menu)
 {

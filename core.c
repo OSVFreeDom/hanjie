@@ -4,7 +4,32 @@
 #include <time.h>
 #include <unistd.h>
 
-#define TAILLE_MAX 70 // Tableau de taille 70
+#define TAILLE_MAX 150 // Tableau de taille 150
+
+int scan_entree(char* str)
+{
+	int i = 0;
+	while(str[i] != NULL)
+	{
+		if(str[i] == "q")
+		{
+			i++;
+			if(str[i] == "u")
+			{
+				i++;
+				if(str[i] == "i")
+				{
+					i++;
+					if(str[i] == "t")
+					{
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	return 0;
+}
 
 int createCoordonnee(char* str, int *nbligne, int *nbcolonne, int *modifs)
 {
@@ -126,7 +151,7 @@ int modifs_grille(int *modifs, int *grille_cours[TAILLE_MAX][TAILLE_MAX], int *t
 			while(x <= x2)
 			{
 				y = 0;
-				while(y < taille[1])
+				while(y < taille[0])
 				{
 					if(grille_cours[x][y] == 0)
 					{
@@ -300,17 +325,19 @@ int affichage_grille(int niveau, int diffuclte, char* nom_fichier, int *nb_colon
 
 int affichage_grille_cours(int niveau, int diffuclte, char* nom_fichier, int *nb_colones, int *indicateurs_lignes[TAILLE_MAX][TAILLE_MAX], int *taille, int *taille_nb_lignes_indicateur_lignes, int *nb_lignes, int *grille[TAILLE_MAX][TAILLE_MAX], int *grille_cours[TAILLE_MAX][TAILLE_MAX])
 {
-	
+	int m = 0;
     int l = 0;
     int i = 0;
     int j = 0;
  
-				while (i < taille[0])
+				while (i < taille[1])
 				{
+					m = l+1;
+					grille_gauche(taille, m, 0, nb_colones, taille_nb_lignes_indicateur_lignes);
 					affichage_grille3(indicateurs_lignes, taille, taille_nb_lignes_indicateur_lignes, nb_lignes, l);
 					printf(" ");
 					j = 0;
-					while (j < taille[1])
+					while (j < taille[0])
 					{
 						if(grille_cours[i][j] == 1)
 						{
@@ -341,6 +368,7 @@ int affichage_grille_cours(int niveau, int diffuclte, char* nom_fichier, int *nb
 						}
 						j++;
 					}
+					printf("%c%c%c", 0xE2, 0x94, 0x82);
 					printf("\n");
 					i++;
 					l++;
@@ -353,24 +381,24 @@ int affichage_grille2(int *indicateurs_colones[TAILLE_MAX][TAILLE_MAX], int *tai
 {	
     int i = *taille_nb_lignes_indicateur_colones;
     int j = 0;
-    int doublevaleur = taille[1] * 2;
-    int triplevaleur = taille[1] * 3;
+    int doublevaleur = taille[0] * 2;
+    int triplevaleur = taille[0] * 3;
     int k = 0;
 
     while (k < i)
     {
     	j = 0;
-    	printf(" ");
+    	printf("   ");
     	for (int i = 0; i < *taille_nb_lignes_indicateur_lignes; i++)
 		{
 			printf("  ");
 			if(*nb_colones == 2)
        		{
-       			printf(" ");
+       			//printf(" ");
        		}
 		}
     	printf("%c%c%c", 0xE2, 0x94, 0x82);
-      	while (j < taille[1])
+      	while (j < taille[0])
        	{
        		if(indicateurs_colones[k][j] == 0)
        		{
@@ -408,9 +436,10 @@ int affichage_grille2(int *indicateurs_colones[TAILLE_MAX][TAILLE_MAX], int *tai
         k++;
     }
     j = 0;
-    printf("  ");
+    //printf("  ");
     for (int i = 0; i < *taille_nb_lignes_indicateur_lignes; i++)
 		{
+			printf("%c%c%c", 0xE2, 0x94, 0x80);
 			printf("%c%c%c", 0xE2, 0x94, 0x80);
 		}
     if(*nb_colones == 2)
@@ -439,6 +468,7 @@ int affichage_grille2(int *indicateurs_colones[TAILLE_MAX][TAILLE_MAX], int *tai
        		j++;
        	}
     }
+    //printf("%c%c%c", 0xE2, 0x94, 0x80);
     printf ("\n");
     return 0;
 }
@@ -494,6 +524,7 @@ int affichage_grille3(int *indicateurs_lignes[TAILLE_MAX][TAILLE_MAX], int *tail
 
 int taille_affichage(int *taille, char* nom_fichier)
 {
+	int j = 0;
 	FILE* fichier = NULL;
     char chaine[TAILLE_MAX] = ""; // Chaîne vide de taille TAILLE_MAX
  
@@ -506,16 +537,31 @@ int taille_affichage(int *taille, char* nom_fichier)
         {
         	if(i == 1)
         	{
-        		char *  p    = strtok (chaine, " ");
+        		/*printf("%s\n", chaine);
+        		char *p;
+        		p = strtok (chaine, " ");
         		taille[0] = atoi(p);
-        		p    = strtok (chaine, " ");
-        		taille[1] = atoi(p);
+        		p = strtok (chaine, " ");
+        		taille[1] = atoi(chaine);
+        		printf("%s\n", chaine);*/
+
+
+        		char *token, *string;
+
+	           string = strdup(chaine);
+
+	           while ((token = strsep(&string, " ")) != NULL)
+	           {
+	           		taille[j] = atoi(token);
+	           		j++;
+	           }
         	}
             i++;
         }
  
         fclose(fichier);
     }
+    //printf("%d %d\n", taille[0], taille[1]);
     return 0;
 
 }
@@ -536,10 +582,10 @@ int grille_haut(int *taille[2], int *nb_colones, int *taille_nb_lignes_indicateu
 		printf("  ");
 		if(*nb_colones == 2)
        		{
-       			printf(" ");
+       			//printf(" ");
        		}
 	}
-	printf("   ");
+	printf("     ");
 	while(i < somme)
 	{
 		char lettres[27] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -551,13 +597,13 @@ int grille_haut(int *taille[2], int *nb_colones, int *taille_nb_lignes_indicateu
 		i++;
 	}
 	printf("\n");
-	printf("  ");
+	printf("     ");
 	for (int i = 0; i < *taille_nb_lignes_indicateur_lignes; i++)
 	{
 		printf("  ");
 		if(*nb_colones == 2)
        		{
-       			printf(" ");
+       			//printf(" ");
        		}
 	}
 	if(*nb_colones == 2)
@@ -580,13 +626,60 @@ int grille_haut(int *taille[2], int *nb_colones, int *taille_nb_lignes_indicateu
 
 }
 
+int grille_bas(int *taille[2], int *nb_colones, int *taille_nb_lignes_indicateur_lignes)
+{
+	int k = 0;
+	int i = 0;
+	int somme = 0;
+	int sommedouble = 0;
+	int sommetriple = 0;
+	int j = 0;
+	somme = taille[0];
+	sommedouble = (somme * 2 - (somme / 2) - (somme / 3));
+	sommetriple = (somme * 3 - (somme / 2) - (somme / 3));
+	int calcul_double = ((*taille_nb_lignes_indicateur_lignes * 2) + (somme));
+	int calcul_triple = ((*taille_nb_lignes_indicateur_lignes * 2) + (somme * 2));
+	if(*nb_colones == 2)
+    {
+       	while(j < calcul_triple)
+		{
+			printf("%c%c%c", 0xE2, 0x94, 0x80);
+			if(j % 2 == 0)
+			{
+				printf("%c%c%c", 0xE2, 0x94, 0x80);
+			}
+			//printf("%c%c%c", 0xE2, 0x94, 0x80);
+			j++;
+		}
+    }
+    else {
+    	while(j < calcul_double)
+		{
+			printf("%c%c%c", 0xE2, 0x94, 0x80);
+			if(j % 2 == 0)
+			{
+				printf("%c%c%c", 0xE2, 0x94, 0x80);
+			}
+			//printf("%c%c%c", 0xE2, 0x94, 0x80);
+			j++;
+		}
+    }
+    printf("%c%c%c", 0xE2, 0x94, 0x80);
+    printf("%c%c%c", 0xE2, 0x94, 0x80);
+	printf("\n");
+    return 0;
+
+}
+
 int grille_gauche(int *taille[2], int *nb_cours, int debut, int *nb_colones, int *taille_nb_lignes_indicateur_lignes)
 {
+	//nb_cours = nb_cours - 2;
+	//nb_cours = nb_cours + 1;
 	int j = 0;
-	for (int i = 0; i < *taille_nb_lignes_indicateur_lignes; i++)
+	/*for (int i = 0; i < *taille_nb_lignes_indicateur_lignes; i++)
 	{
 		printf("    ");
-	}
+	}*/
 	if (debut == 1)
 	{
 		printf("   ");
@@ -599,9 +692,15 @@ int grille_gauche(int *taille[2], int *nb_cours, int debut, int *nb_colones, int
 		}
 	}
 	else {
-		printf("%d ", nb_cours);
-		printf(" ");
-		printf("%c%c%c", 0xE2, 0x94, 0x82);
+		if(nb_cours < 10)
+		{
+			printf("%d", nb_cours);
+			printf(" ");
+		}
+		else {
+			printf("%d", nb_cours);
+		}
+		//printf("%c%c%c", 0xE2, 0x94, 0x82);
 	}
 	return 0;
 }
@@ -644,7 +743,7 @@ int calcul_chiffres_colone(int *taille, char* nom_fichier, int *grille[TAILLE_MA
 	int o = 0;
 	int s = 0;
 	int smax = s;
-	while(c < taille[1])
+	while(c < taille[0])
 	{
 		if(s > smax)
 		{
@@ -653,7 +752,7 @@ int calcul_chiffres_colone(int *taille, char* nom_fichier, int *grille[TAILLE_MA
 		l = 0;
 		s = 0;
 		o = 0;
-		while(l < taille[0])
+		while(l < taille[1])
 		{
 			if(grille[l][c] == 1) {
 				o++;
@@ -730,7 +829,7 @@ int calcul_chiffres_ligne(int *taille, char* nom_fichier, int *grille[TAILLE_MAX
 	int o = 0;
 	int s = 0;
 	int smax = s;
-	while(l < taille[0])
+	while(l < taille[1])
 	{
 		if(s > smax)
 		{
@@ -739,7 +838,7 @@ int calcul_chiffres_ligne(int *taille, char* nom_fichier, int *grille[TAILLE_MAX
 		c = 0;
 		s = 0;
 		o = 0;
-		while(c < taille[1])
+		while(c < taille[0])
 		{
 			if(grille[l][c] == 1) {
 				o++;

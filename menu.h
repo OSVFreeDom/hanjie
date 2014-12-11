@@ -4,7 +4,7 @@
 #include <time.h>
 #include <unistd.h>
 
-#define TAILLE_MAX 70 // Tableau de taille 70
+#define TAILLE_MAX 150 // Tableau de taille 150
 
 int menu(int choix, FILE* historique);
 int affichage_menu();
