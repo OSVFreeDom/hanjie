@@ -34,6 +34,25 @@ int main(int argc, char const *argv[])
 	char* commande_quit = "quit";
 	int ret = 0;
 
+	// Code pour l'affichage digital :
+	int nn, taille1 = 5, taille2 = 20;
+	int kk=0;
+	int hh=0;
+	int **grandTableau;
+	grandTableau = malloc(taille1 *sizeof(*grandTableau));
+	for (nn=0 ; nn<taille1+1 ; nn++)
+    {
+        grandTableau[nn] = malloc(taille2 *sizeof(**grandTableau));
+    }
+    int chiffre1 = 0;
+  	int chiffre2 = 0;
+  	int chiffre3 = 0;
+  	int chiffre4 = 0;
+
+
+	// Code pour l'affichage digital |
+
+
 	time_t time1 = 0 ;
 	time_t time2 = 0 ;
 	time_t TimePast = 0;
@@ -56,8 +75,39 @@ int main(int argc, char const *argv[])
 		if(jeu_fini == 1)
 		{
 			last = 1;
-			printf ("Bravo vous avez mis %d minutes et %d secondes pour realiser cette grille \n", minute, seconde);
-			printf("\n Appuyez sur Entrer pour revenir au menu.");
+			chiffre2 = minute/10;
+			chiffre1 = minute%10;
+			chiffre3 = seconde/10;
+			chiffre4 = seconde%10;
+			ajout_chiffre(grandTableau, chiffre1, chiffre2, chiffre3, chiffre4);
+
+		//	printf ("\nBravo vous avez mis %d minutes et %d secondes pour realiser cette grille \n", minute, seconde);
+			printf("\n\nBravo vous avez reussi !!\n");
+			printf("\n Temps de jeu pour résoudre la grille :");
+			printf("\n");
+			 while (kk<5)
+          	 {
+      			while (hh<20)
+    			{
+      			if (grandTableau[kk][hh] == 1)
+     			{
+        			printf("%c%c%c", 0xE2, 0x96, 0x88);
+        			hh++;
+      			}
+      			else
+      			{
+       			printf(" ");
+        		hh++;
+      			}
+    			}
+    			kk++;
+    			hh=0;
+    			printf("\n");
+   				}
+
+			printf("\n (temps en minutes : secondes)");
+
+			printf("\n\n Appuyez sur Entrer pour revenir au menu.");
 			fgets(&commande, sizeof &commande, stdin);
 		}
 		else {
