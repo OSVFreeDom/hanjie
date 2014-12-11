@@ -5,6 +5,512 @@
 #include <unistd.h>
 #define TAILLE_MAX 150 // Tableau de taille 150
 
+int ajout_chiffre(int **pointeurGrandTableau, int digit1, int digit2, int digit3, int digit4)
+{
+  int chiffre0[5][3] = {{1,1,1},{1,0,1},{1,0,1},{1,0,1},{1,1,1}};
+  int chiffre1[5][3] = {1,0,0,1,0,0,1,0,0,1,0,0,1,0,0};
+  int chiffre2[5][3] = {1,1,1,0,0,1,1,1,1,1,0,0,1,1,1};
+  int chiffre3[5][3] = {1,1,1,0,0,1,1,1,1,0,0,1,1,1,1};
+  int chiffre4[5][3] = {1,0,1,1,0,1,1,1,1,0,0,1,0,0,1};
+  int chiffre5[5][3] = {1,1,1,1,0,0,1,1,1,0,0,1,1,1,1};
+  int chiffre6[5][3] = {1,1,1,1,0,0,1,1,1,1,0,1,1,1,1};
+  int chiffre7[5][3] = {1,1,1,0,0,1,0,0,1,0,0,1,0,0,1};
+  int chiffre8[5][3] = {1,1,1,1,0,1,1,1,1,1,0,1,1,1,1};
+  int chiffre9[5][3] = {1,1,1,1,0,1,1,1,1,0,0,1,1,1,1};
+  int i=0;
+  int j=0;
+  int k=0;
+
+
+  // Place des premieres colonnes pour ajouter les 4 chiffres
+  int place1 = 0; // chiffre 1 : 1ere colonne
+  int place2 = 5;
+  int place3 = 12;
+  int place4 = 17;
+
+  // chiffre 1
+
+  switch (digit2)
+  {
+    case 1 :
+      for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre1[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 2 :
+      for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre2[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 3 :
+      for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre3[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 4 :
+      for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre4[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 5 :
+      for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre5[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 6 :
+     for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre6[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 7 :
+      for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre7[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 8 :
+     for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre8[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 9 :
+      for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 0 :
+     for (i= place1 ; i<place1+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+
+}
+
+// RAZ de la variable k pour la re-incrementer pour le 2eme digit
+k = 0;
+// chiffre2
+ switch (digit1)
+  {
+    case 1 :
+      for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre1[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 2 :
+      for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre2[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 3 :
+      for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre3[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 4 :
+      for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre4[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 5 :
+      for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre5[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 6 :
+     for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre6[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 7 :
+      for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre7[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 8 :
+     for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre8[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 9 :
+      for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 0 :
+     for (i= place2 ; i<place2+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+
+  }
+
+
+// RAZ de la variable k pour la re-incrementer pour le 2eme digit
+k = 0;
+
+  // chiffre 3 : 
+   switch (digit3)
+  {
+    case 1 :
+      for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre1[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 2 :
+      for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre2[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 3 :
+      for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre3[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 4 :
+      for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre4[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 5 :
+      for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre5[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 6 :
+     for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre6[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 7 :
+      for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre7[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 8 :
+     for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre8[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 9 :
+      for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 0 :
+     for (i= place3 ; i<place3+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+
+}
+
+
+// RAZ de la variable k pour la re-incrementer pour le 2eme digit
+k = 0;
+//chiffre 4
+switch (digit4)
+  {
+    case 1 :
+      for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre1[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 2 :
+      for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre2[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 3 :
+      for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre3[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 4 :
+      for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre4[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 5 :
+      for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre5[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 6 :
+     for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre6[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 7 :
+      for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre7[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 8 :
+     for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre8[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 9 :
+      for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+    break;
+    case 0 :
+     for (i= place4 ; i<place4+3 ; i++)
+    {
+        for (j =0 ; j<5 ; j++)
+                            {
+                pointeurGrandTableau[j][i] = chiffre0[j][k];
+                        }
+
+        k++;
+    }
+
+}
+  pointeurGrandTableau[1][9] = 1;
+  pointeurGrandTableau[3][9] = 1;
+  pointeurGrandTableau[1][10] = 1;
+  pointeurGrandTableau[3][10] = 1;
+
+}
+
+
+
+
+
+
+
+
 int affichage_menu(char* choix_grille[TAILLE_MAX], int* retour_menu)
 {
 
